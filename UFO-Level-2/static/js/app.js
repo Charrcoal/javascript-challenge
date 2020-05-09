@@ -33,16 +33,59 @@ form.on("submit", runEnter)
 // create the function to run the events
 function runEnter() {
     d3.event.preventDefault();
-    var inputElement = d3.select("#datetime");
-    var inputValue = inputElement.property("value");
-    
-    var filteredData = tableData.filter(element => element.datetime === inputValue);
+    var inputDatetime = d3.select("#datetime");
+    var inputCityname = d3.select("#cityname");
+    var inputStatename = d3.select("#statename");
+    var inputCountryname = d3.select("#countryname");
+    var inputUFOshape = d3.select("#ufoshape");
 
-    if (inputValue === "") {
-        var filteredData = tableData;
-    };
+    // #city #state #country #shape 
+    var inputDatetimeValue = inputDatetime.property("value");
+    var inputCitynameValue = inputCityname.property("value");
+    var inputStatenameValue = inputStatename.property("value");
+    var inputCountrynameValue = inputCountryname.property("value");
+    var inputUFOshapeValue = inputUFOshape.property("value");
+
+
+// filter the data based on user's input
+    var filteredData = tableData;
     
-    // console.log(filteredData);
+    if (inputDatetimeValue === "") {
+        filteredData = filteredData;
+    }
+    else if (inputDatetimeValue !== "") {
+        filteredData = tableData.filter(element => element.datetime === inputDatetimeValue); 
+    };
+
+
+    if (inputCitynameValue === "") {
+        filteredData = filteredData;
+    }
+    else if (inputCitynameValue !== "") {
+        filteredData = filteredData.filter(element => element.city === inputCitynameValue); 
+    };
+
+    if (inputStatenameValue === "") {
+        filteredData = filteredData;
+    }
+    else if (inputStatenameValue !== "") {
+        filteredData = filteredData.filter(element => element.state === inputStatenameValue); 
+    };
+
+    if (inputCountrynameValue === "") {
+        filteredData = filteredData;
+    }
+    else if (inputCountrynameValue !== "") {
+        filteredData = filteredData.filter(element => element.country === inputCountrynameValue); 
+    };
+
+    if (inputUFOshapeValue === "") {
+        filteredData = filteredData;
+    }
+    else if (inputUFOshapeValue !== "") {
+        filteredData = filteredData.filter(element => element.shape === inputUFOshapeValue); 
+    };
+
 
     // get a reference to the table body in index.html
     tbody.html("");
