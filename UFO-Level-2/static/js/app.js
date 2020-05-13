@@ -25,10 +25,10 @@ tableData.forEach((element) => {
 // // Grab the filter criteria 
 // select the button and form in index.html
 var button = d3.select("#filter-btn");
-var form = d3.select(".panel-body");
+var form = d3.selectAll(".panel-body");
 // create event handlers for clicking the button or pressing the enter key 
 button.on("click", runEnter)
-form.on("submit", runEnter)
+form.on("change", runEnter)
 
 // create the function to run the events
 function runEnter() {
